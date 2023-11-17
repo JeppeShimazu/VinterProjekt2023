@@ -30,4 +30,12 @@ Console.ReadLine();
 Console.WriteLine($"The {mySanta.name} Santa, Are you ready to start the game?");
 Console.WriteLine("(1) Start the game");
 Console.WriteLine("(2) Read the game instructions");
+ 
+Console.ReadLine();
+//Om readline = 1 starta spelet
+//Om readline = 2 Console.WriteLine("spel instructioner");
 
+Console.WriteLine("\n----- CHRISTMAS IS HERE -----");
+Console.WriteLine("\n Items Equpied: || House type: || People in the house: || Entry chance: ");
+
+Console.ReadLine();
