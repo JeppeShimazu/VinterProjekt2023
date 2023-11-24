@@ -9,7 +9,7 @@
 // ------EVENTUELLA IDEER PÅ SPEL DESIGN------
     // 1. Man spelar som tomten från 1 dec till 24 dec och ska komma så långt man kan (blir svårare o svårare)
     // 2. Man spelar som tomten och ska lämna julklappar, man får en typ av currency för varje hus, med currency kan man köpa items som ger olika bonusar (använder en "list" som ett inventory/shop system)
-    // 3. Man spelar som 
+    // 3. Man spelar som...
 
 
 
@@ -28,9 +28,35 @@ Console.WriteLine($"The {mySanta.name} Santa, wow what a cool name to describe y
 Console.ReadLine();
 //CLEAR CONSOLE IN FUTURE
 Console.WriteLine($"The {mySanta.name} Santa, Are you ready to start the game?");
-Console.WriteLine("(1) Start the game");
-Console.WriteLine("(2) Read the game instructions");
- 
+Console.WriteLine("(1) Read game instructions");
+Console.WriteLine("(2) Start the game");
+
+//Start of trying to add instructions or start
+
+string a = ReglerYesNo("");
+
+if (a == "1")
+{
+Console.WriteLine("In this game you will be entering houses, you need to get to 24 successful deliveries, you will have the choice to enter differet houses with a different amount of people in them, the more people the bigger the risk of getting caught, but successfully delivering to a large house will also grant a bigger reward");
+}
+if (a == "2")
+{
+Console.WriteLine("MERRY CHRISTMAS! LETS GO!");
+}
+
+static string ReglerYesNo(string QuestionText)
+{
+Console.WriteLine(QuestionText);
+Console.WriteLine("[1/2]");
+
+string anwser = Console.ReadLine().ToLower();
+
+
+return anwser;
+}
+
+//End of trying to add instructions or start
+
 Console.ReadLine();
 //Om readline = 1 starta spelet
 //Om readline = 2 Console.WriteLine("spel instructioner");
