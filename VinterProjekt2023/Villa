@@ -1,0 +1,13 @@
+using System;
+public class Villa : House
+{
+public Villa()
+{
+Name = "Villa";
+
+Random random = new Random();
+int randomNumber = random.Next(1, 8);
+People = randomNumber;
+
+}
+}

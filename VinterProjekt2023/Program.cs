@@ -37,7 +37,7 @@ string a = ReglerYesNo("");
 
 if (a == "1")
 {
-Console.WriteLine("In this game you will be entering houses, you need to get to 24 successful deliveries, you will have the choice to enter differet houses with a different amount of people in them, the more people the bigger the risk of getting caught, but successfully delivering to a large house will also grant a bigger reward");
+Console.WriteLine("In this game you will be entering houses, you need to get to 24 successful deliveries, you will have the choice to enter differet houses with a different amount of people in them, the more people the bigger the risk of getting caught, but successfully delivering to a large house will also grant a bigger reward, press again to start the game!");
 }
 if (a == "2")
 {
@@ -61,7 +61,43 @@ Console.ReadLine();
 //Om readline = 1 starta spelet
 //Om readline = 2 Console.WriteLine("spel instructioner");
 
+Console.WriteLine("Please choose what house to deliver gifts to:");
+//START OF TEST ADDITION
+string b = TypeOfHouse("");
+
+if (b == "1")
+{
+Console.WriteLine("You have chosen to enter a Cabin!");
+}
+if (b == "2")
+{
+Console.WriteLine("You have chosen to enter an Apartment!");
+}
+if (b == "3")
+{
+Console.WriteLine("You have chosen to enter a Villa!");
+}
+if (b == "4")
+{
+Console.WriteLine("You have chosen to enter a Mansion!");
+}
+
+static string TypeOfHouse(string BuildingQuestion)
+{
+Console.WriteLine(BuildingQuestion);
+Console.WriteLine("[1/2/3/4]");
+
+string anwser = Console.ReadLine().ToLower();
+
+
+return anwser;
+}
+//END OF TEST ADDITION
+Console.ReadLine();
+
 Console.WriteLine("\n----- CHRISTMAS IS HERE -----");
-Console.WriteLine("\n Items Equpied: || House type: || People in the house: || Entry chance: ");
+Console.WriteLine($"\n Santa Name: The {mySanta.name} Santa || Items Equpied: || House type: || People in the house: || Entry chance: ");
+
+
 
 Console.ReadLine();
