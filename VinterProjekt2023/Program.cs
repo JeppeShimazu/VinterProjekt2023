@@ -1,20 +1,4 @@
-﻿//Ett spel där man lämnar presenter
-//Klasser med olika hus
-//  (Beroende på typ av hus ska det finnas en chans att bli tagen)
-
-//Ett system för att bli tagen med en procentuell chans
-
-//Olika sätt att ta sig in i husen (kan göras av metoder, använder variabler)
-
-// ------EVENTUELLA IDEER PÅ SPEL DESIGN------
-// 1. Man spelar som tomten från 1 dec till 24 dec och ska komma så långt man kan (blir svårare o svårare)
-// 2. Man spelar som tomten och ska lämna julklappar, man får en typ av currency för varje hus, med currency kan man köpa items som ger olika bonusar (använder en "list" som ett inventory/shop system)
-// 3. Man spelar som...
-
-
-
-// ------- START AV SPELET ------
-using System;
+﻿using System;
 
 Console.WriteLine("Hello and welcome to Santas gift delivery");
 Santa mySanta = new Santa();
@@ -25,6 +9,7 @@ Cabin cabin = new();
 
 //Bool för att bli catchad eller inte
 bool caught = false;
+int gifts = 0;
 
 Console.ReadLine();
 
@@ -69,6 +54,9 @@ Console.ReadLine();
 //Om readline = 1 starta spelet
 //Om readline = 2 Console.WriteLine("spel instructioner");
 
+while (caught == false)
+{
+
 Console.WriteLine("Please choose what house to deliver gifts to:");
 //START OF TEST ADDITION
 string b = TypeOfHouse("");
@@ -85,18 +73,16 @@ if (b == "1")
     cabin.CabinPeople();
     entry = "1/10";
 
-    if (House.People < 3)
-{
         int randomNumber = Random.Shared.Next(1, 11);
         Detection = randomNumber;
-        if (Detection > 1)
+        if (Detection >= 2)
         {
         caught = false;
         }
-        else if (Detection < 2)
+        if (Detection < 2)
         {caught = true;}
 }
-}
+
 if (b == "2")
 {
     Console.WriteLine("You have chosen to enter an Apartment!");
@@ -104,17 +90,15 @@ if (b == "2")
     apartment.ApartmentPeople();
     entry = "1/8";
 
-    if (House.People < 3)
-{
         int randomNumber = Random.Shared.Next(1, 9);
         Detection = randomNumber;
-        if (Detection > 1)
+        if (Detection >= 2)
         {
         caught = false;
         }
         else if (Detection < 2)
         {caught = true;}
-}
+
 }
 if (b == "3")
 {
@@ -122,18 +106,15 @@ if (b == "3")
     myHouse.Type = "Villa";
     villa.VillaPeople();
     entry = "1/6";
-
-    if (House.People < 3)
-{
         int randomNumber = Random.Shared.Next(1, 7);
         Detection = randomNumber;
-        if (Detection > 1)
+        if (Detection >= 2)
         {
         caught = false;
         }
         else if (Detection < 2)
         {caught = true;}
-}
+
 }
 if (b == "4")
 {
@@ -141,18 +122,15 @@ if (b == "4")
     myHouse.Type = "Mansion";
     mansion.MansionPeople();
     entry = "1/4";
-
-    if (House.People < 3)
-{
         int randomNumber = Random.Shared.Next(1, 5);
         Detection = randomNumber;
-        if (Detection > 1)
+        if (Detection >= 2)
         {
         caught = false;
         }
         else if (Detection < 2)
         {caught = true;}
-}
+
 }
 
 static string TypeOfHouse(string BuildingQuestion)
@@ -168,10 +146,27 @@ static string TypeOfHouse(string BuildingQuestion)
 }
 //END OF TEST ADDITION
 Console.ReadLine();
-
+gifts += House.People;
 
 Console.WriteLine("\n----- CHRISTMAS IS HERE -----");
-Console.WriteLine($"\n Santa Name: The {mySanta.name} Santa || House type: {myHouse.Type} || People in the house: {House.People} || Detection Chance: {entry}");
-Console.WriteLine(" Presents delivered /24");
+Console.WriteLine($"\n Santa Name: The {mySanta.name} Santa || House type: {myHouse.Type} || People in the house: {House.People} || Detection Chance: {entry} ||");
+Console.WriteLine($" Presents delivered {gifts}/24");
+Console.ReadLine();
+
+if (gifts >= 24)
+{
+Console.WriteLine($"Congrats The {mySanta.name} Santa! You successfully delivered the last 24 gifts in time for Christmas!!!");
+Console.ReadLine();
+Environment.Exit(0);
+}
+
+}
+
+if (caught == true) 
+{
+Console.WriteLine($"The {mySanta.name} Santa was caught...");
+Console.ReadLine();
+Environment.Exit(0);
+}
 
 Console.ReadLine();
