@@ -23,6 +23,9 @@ Villa villa = new();
 Apartment apartment = new();
 Cabin cabin = new();
 
+//Bool för att bli catchad eller inte
+bool caught = false;
+
 Console.ReadLine();
 
 Console.WriteLine("Please choose a funny description name for your santa, example: The ______ Santa");
@@ -72,40 +75,93 @@ string b = TypeOfHouse("");
 
 House myHouse = new House();
 
+int Detection = 0;
+string entry = "";
 
 if (b == "1")
 {
     Console.WriteLine("You have chosen to enter a Cabin!");
     myHouse.Type = "Cabin";
     cabin.CabinPeople();
+    entry = "1/10";
+
+    if (House.People < 3)
+{
+        int randomNumber = Random.Shared.Next(1, 11);
+        Detection = randomNumber;
+        if (Detection > 1)
+        {
+        caught = false;
+        }
+        else if (Detection < 2)
+        {caught = true;}
+}
 }
 if (b == "2")
 {
     Console.WriteLine("You have chosen to enter an Apartment!");
     myHouse.Type = "Apartment";
     apartment.ApartmentPeople();
+    entry = "1/8";
+
+    if (House.People < 3)
+{
+        int randomNumber = Random.Shared.Next(1, 9);
+        Detection = randomNumber;
+        if (Detection > 1)
+        {
+        caught = false;
+        }
+        else if (Detection < 2)
+        {caught = true;}
+}
 }
 if (b == "3")
 {
     Console.WriteLine("You have chosen to enter a Villa!");
     myHouse.Type = "Villa";
     villa.VillaPeople();
+    entry = "1/6";
+
+    if (House.People < 3)
+{
+        int randomNumber = Random.Shared.Next(1, 7);
+        Detection = randomNumber;
+        if (Detection > 1)
+        {
+        caught = false;
+        }
+        else if (Detection < 2)
+        {caught = true;}
+}
 }
 if (b == "4")
 {
     Console.WriteLine("You have chosen to enter a Mansion!");
     myHouse.Type = "Mansion";
     mansion.MansionPeople();
+    entry = "1/4";
 
+    if (House.People < 3)
+{
+        int randomNumber = Random.Shared.Next(1, 5);
+        Detection = randomNumber;
+        if (Detection > 1)
+        {
+        caught = false;
+        }
+        else if (Detection < 2)
+        {caught = true;}
+}
 }
 
 static string TypeOfHouse(string BuildingQuestion)
 {
     Console.WriteLine(BuildingQuestion);
-    Console.WriteLine("[1 Cabin]");
-    Console.WriteLine("[2 Apartment]");
-    Console.WriteLine("[3 Villa]");
-    Console.WriteLine("[4 Mansion]");
+    Console.WriteLine("[1 Cabin] (SAFE)");
+    Console.WriteLine("[2 Apartment] (LESS SAFE)");
+    Console.WriteLine("[3 Villa](ON THE DANGEROUS SIDE)");
+    Console.WriteLine("[4 Mansion](RISKY)");
     string anwser = Console.ReadLine();
 
     return anwser;
@@ -113,17 +169,9 @@ static string TypeOfHouse(string BuildingQuestion)
 //END OF TEST ADDITION
 Console.ReadLine();
 
-//Generate detection
-int Detection = 0;
-if (House.People < 3)
-{
-        int randomNumber = Random.Shared.Next(1, 11);
-        Detection = randomNumber;
-}
-
-
 
 Console.WriteLine("\n----- CHRISTMAS IS HERE -----");
-Console.WriteLine($"\n Santa Name: The {mySanta.name} Santa || House type: {myHouse.Type} || People in the house: {House.People} || Detection Chance:  ");
+Console.WriteLine($"\n Santa Name: The {mySanta.name} Santa || House type: {myHouse.Type} || People in the house: {House.People} || Detection Chance: {entry}");
+Console.WriteLine(" Presents delivered /24");
 
 Console.ReadLine();
